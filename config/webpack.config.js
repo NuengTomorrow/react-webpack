@@ -10,7 +10,9 @@ let mode = "development";
 let target = "web";
 const plugins = [
   new CleanWebpackPlugin(),
-  new MiniCssExtractPlugin(),
+  new MiniCssExtractPlugin({
+    filename: "index.css",
+  }),
   new HtmlWebpackPlugin({
     template: path.resolve(__dirname, "../src/index.html"),
     favicon: path.resolve(__dirname, "../src/assets/favicon.ico"),
@@ -51,6 +53,7 @@ module.exports = {
   entry: path.resolve(__dirname, "../src/index.js"),
 
   output: {
+    filename:"index.js",
     // output path is required for `clean-webpack-plugin`
     path: path.resolve(__dirname, "../build"),
     // this places all images processed in an image folder
@@ -123,7 +126,7 @@ module.exports = {
 
   target: target,
 
-  devtool: "source-map",
+  devtool: false,
 
   resolve: {
     extensions: [".js", ".jsx"],
